@@ -542,7 +542,11 @@ roles {{ gitlab_roles }}
 ##! Docs: https://docs.gitlab.com/ce/administration/container_registry.html
 ################################################################################
 
+{% if gitlab_registry_external_url %}
+registry_external_url '{{ registry_external_url }}'
+{% else %}
 # registry_external_url 'https://registry.gitlab.example.com'
+{% endif %}
 
 ### Settings used by GitLab application
 # gitlab_rails['registry_enabled'] = true
